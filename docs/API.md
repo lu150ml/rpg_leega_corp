@@ -65,14 +65,16 @@ curl -s http://localhost:5000/api/players/Alex
 ```json
 {
   "player_id": 1,
-  "evento_atual": "cap01_primeira_tarefa",
-  "energia": 70,
-  "reputacao": 50,
-  "networking": 55,
-  "ansiedade": 5,
+  "evento_atual": "CS_D01_E2",
+  "energia": 68,
+  "reputacao": 55,
+  "networking": 54,
+  "ansiedade": 7,
   "produtividade": 50,
   "aprendizado": 50,
-  "flags": { "primeiro_dia_feito": true },
+  "dia_atual": 1,
+  "eventos_hoje": 1,
+  "flags": { "ok_CS_D01_E1": true, "trainee_primeiro_dia": true },
   "final_obtido": null,
   "atualizado_em": "..."
 }
@@ -88,7 +90,7 @@ curl -s http://localhost:5000/api/saves/Alex
 
 ### `PUT /api/saves/<nome>`
 
-**Body** (campos opcionais): `evento_atual`, `energia`, `reputacao`, `networking`, `ansiedade`, `produtividade`, `aprendizado`, `flags`, `final_obtido`.
+**Body** (campos opcionais): `evento_atual`, `energia`, `reputacao`, `networking`, `ansiedade`, `produtividade`, `aprendizado`, `dia_atual`, `eventos_hoje`, `flags`, `final_obtido`.
 
 **curl:**
 
@@ -115,7 +117,7 @@ curl -s -o NUL -w "%{http_code}" -X DELETE http://localhost:5000/api/saves/Alex
 **200** — evento completo + metadado `id` ou `null` se não houver evento:
 
 ```json
-{ "evento": { "id": "cap01_primeiro_dia", "descricao": "...", "opcoes": [] } }
+{ "evento": { "id": "CS_D01_E1", "descricao": "...", "opcoes": [] } }
 ```
 
 **curl:**
@@ -133,7 +135,7 @@ curl -s "http://localhost:5000/api/events/proximo?nome=Alex"
 **curl:**
 
 ```bash
-curl -s http://localhost:5000/api/events/cap01_primeiro_dia
+curl -s http://localhost:5000/api/events/CS_D01_E1
 ```
 
 ---
@@ -145,8 +147,8 @@ curl -s http://localhost:5000/api/events/cap01_primeiro_dia
 ```json
 {
   "nome": "Alex",
-  "evento_id": "cap01_primeiro_dia",
-  "opcao_id": "opt_apresentar_proativo"
+  "evento_id": "CS_D01_E1",
+  "opcao_id": "opt_ok_CS_D01_E1_a"
 }
 ```
 
@@ -155,7 +157,7 @@ curl -s http://localhost:5000/api/events/cap01_primeiro_dia
 ```json
 {
   "save": { "...": "..." },
-  "proximo_evento": { "id": "cap01_primeira_tarefa", "...": "..." },
+  "proximo_evento": { "id": "CS_D01_E2", "...": "..." },
   "final": null
 }
 ```
@@ -173,7 +175,7 @@ Exemplo encerrando narrativa:
 **curl:**
 
 ```bash
-curl -s -X POST http://localhost:5000/api/decisions -H "Content-Type: application/json" -d "{\"nome\":\"Alex\",\"evento_id\":\"cap01_primeiro_dia\",\"opcao_id\":\"opt_apresentar_proativo\"}"
+curl -s -X POST http://localhost:5000/api/decisions -H "Content-Type: application/json" -d "{\"nome\":\"Alex\",\"evento_id\":\"CS_D01_E1\",\"opcao_id\":\"opt_ok_CS_D01_E1_a\"}"
 ```
 
 ---
@@ -185,7 +187,7 @@ curl -s -X POST http://localhost:5000/api/decisions -H "Content-Type: applicatio
 ```json
 {
   "decisoes": [
-    { "evento_id": "cap01_primeiro_dia", "opcao_id": "opt_apresentar_proativo", "decidido_em": "..." }
+    { "evento_id": "CS_D01_E1", "opcao_id": "opt_ok_CS_D01_E1_a", "decidido_em": "..." }
   ]
 }
 ```

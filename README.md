@@ -56,7 +56,7 @@ O Flask serve os arquivos estáticos em `frontend/` e a API em `/api/...` (mesma
 
 ## Como adicionar um novo evento
 
-1. Edite ou crie um arquivo em `backend/data/events/` com a lista `eventos` (veja exemplos em `cap01.json`).
+1. Edite ou crie um arquivo em `backend/data/events/` com a lista `eventos` (referência: `semana_corporate.json`).
 2. Registre o arquivo em `backend/data/events/index.json` **na ordem** em que os eventos devem ser considerados.
 3. Use `id` estáveis para eventos e opções (o save e o histórico dependem disso).
 

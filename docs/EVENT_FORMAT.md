@@ -10,7 +10,7 @@ Cada arquivo listado em `backend/data/events/index.json` deve ter uma chave **`e
 
 | Campo | Obrigatório | Tipo | Descrição |
 |-------|-------------|------|-----------|
-| `id` | sim | string | Identificador estável, ex. `cap01_primeiro_dia` |
+| `id` | sim | string | Identificador estável, ex. `CS_D01_E1` |
 | `descricao` | sim | string | Texto mostrado ao jogador |
 | `condicoes` | sim | array | Lista de condições (pode ser `[]`) |
 | `opcoes` | sim | array | Escolhas disponíveis |

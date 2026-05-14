@@ -254,20 +254,10 @@
   background: linear-gradient(145deg, #1c2a38 0%, #0f1820 100%);
 }
 
-.scene--escritorio_dia {
+/* Usado pelo roteiro atual (`fundo`: escritorio em semana_corporate.json). */
+
+.scene--escritorio {
   background: linear-gradient(160deg, #2a4a5c 0%, #1a2832 55%);
-}
-
-.scene--escritorio_tarde {
-  background: linear-gradient(160deg, #3d3a28 0%, #1f2329 55%);
-}
-
-.scene--sala_reuniao {
-  background: linear-gradient(165deg, #2c3550 0%, #151e2d 60%);
-}
-
-.scene--escritorio_noite {
-  background: linear-gradient(170deg, #1a2438 0%, #0d121c 65%);
 }
 
 .scene__label {
