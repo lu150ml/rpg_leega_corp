@@ -105,3 +105,35 @@ def ensure_progresso_e_ranking(conn: sqlite3.Connection) -> None:
         ON ranking_global (pontuacao DESC)
         """
     )
+
+
+def ensure_cargo_e_rodadas(conn: sqlite3.Connection) -> None:
+    """Adiciona colunas de XP, cargo e rodadas em bancos legados."""
+
+    cur = conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='saves'"
+    )
+    if cur.fetchone() is None:
+        return
+
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(saves)")}
+    if "xp_total" not in cols:
+        conn.execute(
+            "ALTER TABLE saves ADD COLUMN xp_total INTEGER NOT NULL DEFAULT 0"
+        )
+    if "cargo" not in cols:
+        conn.execute(
+            "ALTER TABLE saves ADD COLUMN cargo TEXT NOT NULL DEFAULT 'trainee'"
+        )
+    if "rodada_no_conjunto" not in cols:
+        conn.execute(
+            "ALTER TABLE saves ADD COLUMN rodada_no_conjunto INTEGER NOT NULL DEFAULT 1"
+        )
+    if "xp_conjunto" not in cols:
+        conn.execute(
+            "ALTER TABLE saves ADD COLUMN xp_conjunto INTEGER NOT NULL DEFAULT 0"
+        )
+    if "xp_rodada" not in cols:
+        conn.execute(
+            "ALTER TABLE saves ADD COLUMN xp_rodada INTEGER NOT NULL DEFAULT 0"
+        )

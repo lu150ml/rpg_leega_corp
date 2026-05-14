@@ -48,10 +48,14 @@ def get_save(conn: sqlite3.Connection, player_id: int) -> sqlite3.Row | None:
 def insert_default_save(conn: sqlite3.Connection, player_id: int) -> None:
     conn.execute(
         """
-        INSERT INTO saves (player_id, evento_atual, energia, reputacao,
-          networking, ansiedade, produtividade, aprendizado,
-          dia_atual, eventos_hoje, flags_json, final_obtido, atualizado_em)
-        VALUES (?, NULL, 70, 50, 50, 0, 50, 50, 1, 0, '{}', NULL, ?)
+        INSERT INTO saves (
+          player_id, evento_atual, energia, reputacao, networking, ansiedade,
+          produtividade, aprendizado, dia_atual, eventos_hoje, flags_json,
+          final_obtido, xp_total, cargo, rodada_no_conjunto, xp_conjunto, xp_rodada,
+          atualizado_em
+        )
+        VALUES (?, NULL, 60, 5, 5, 0, 5, 5, 1, 0, '{}', NULL,
+          0, 'trainee', 1, 0, 0, ?)
         """,
         (player_id, _utc_now_iso()),
     )
@@ -72,6 +76,11 @@ def update_save_full(
     eventos_hoje: int,
     flags: dict[str, Any],
     final_obtido: str | None,
+    xp_total: int,
+    cargo: str,
+    rodada_no_conjunto: int,
+    xp_conjunto: int,
+    xp_rodada: int,
 ) -> None:
     conn.execute(
         """
@@ -79,7 +88,9 @@ def update_save_full(
           evento_atual = ?,
           energia = ?, reputacao = ?, networking = ?, ansiedade = ?,
           produtividade = ?, aprendizado = ?, dia_atual = ?, eventos_hoje = ?,
-          flags_json = ?, final_obtido = ?, atualizado_em = ?
+          flags_json = ?, final_obtido = ?,
+          xp_total = ?, cargo = ?, rodada_no_conjunto = ?, xp_conjunto = ?, xp_rodada = ?,
+          atualizado_em = ?
         WHERE player_id = ?
         """,
         (
@@ -94,6 +105,11 @@ def update_save_full(
             eventos_hoje,
             json.dumps(flags, ensure_ascii=False),
             final_obtido,
+            xp_total,
+            cargo,
+            rodada_no_conjunto,
+            xp_conjunto,
+            xp_rodada,
             _utc_now_iso(),
             player_id,
         ),
@@ -115,6 +131,11 @@ def save_row_to_api_dict(row: sqlite3.Row) -> dict[str, Any]:
         "eventos_hoje": row["eventos_hoje"],
         "flags": flags,
         "final_obtido": row["final_obtido"],
+        "xp_total": row["xp_total"],
+        "cargo": row["cargo"],
+        "rodada_no_conjunto": row["rodada_no_conjunto"],
+        "xp_conjunto": row["xp_conjunto"],
+        "xp_rodada": row["xp_rodada"],
         "atualizado_em": row["atualizado_em"],
     }
 
@@ -158,15 +179,50 @@ def update_save_evento_atual(
 
 
 def reset_save(conn: sqlite3.Connection, player_id: int) -> None:
+    """Zera progresso da jornada e metadados de XP/cargo (reset completo)."""
+
     conn.execute("DELETE FROM decisions WHERE player_id = ?", (player_id,))
     conn.execute(
         """
         UPDATE saves SET
           evento_atual = NULL,
-          energia = 70, reputacao = 50, networking = 50, ansiedade = 0,
-          produtividade = 50, aprendizado = 50,
+          energia = 60, reputacao = 5, networking = 5, ansiedade = 0,
+          produtividade = 5, aprendizado = 5,
           dia_atual = 1, eventos_hoje = 0,
-          flags_json = '{}', final_obtido = NULL, atualizado_em = ?
+          flags_json = '{}', final_obtido = NULL,
+          xp_total = 0, cargo = 'trainee', rodada_no_conjunto = 1,
+          xp_conjunto = 0, xp_rodada = 0,
+          atualizado_em = ?
+        WHERE player_id = ?
+        """,
+        (_utc_now_iso(), player_id),
+    )
+
+
+def iniciar_nova_rodada(conn: sqlite3.Connection, player_id: int) -> None:
+    """
+    Nova run na mesma carreira: mantém xp_total e cargo; avança rodada;
+    reseta narrativa e atributos. Exige partida encerrada (final_obtido preenchido).
+    """
+
+    conn.execute("DELETE FROM decisions WHERE player_id = ?", (player_id,))
+    conn.execute(
+        """
+        UPDATE saves SET
+          evento_atual = NULL,
+          energia = 60, reputacao = 5, networking = 5, ansiedade = 0,
+          produtividade = 5, aprendizado = 5,
+          dia_atual = 1, eventos_hoje = 0,
+          flags_json = '{}', final_obtido = NULL, xp_rodada = 0,
+          rodada_no_conjunto = CASE
+            WHEN rodada_no_conjunto >= 3 THEN 1
+            ELSE rodada_no_conjunto + 1
+          END,
+          xp_conjunto = CASE
+            WHEN rodada_no_conjunto >= 3 THEN 0
+            ELSE xp_conjunto
+          END,
+          atualizado_em = ?
         WHERE player_id = ?
         """,
         (_utc_now_iso(), player_id),

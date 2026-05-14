@@ -26,6 +26,7 @@ def init_app(app: flask.Flask) -> None:
         conn_init.executescript(schema_sql)
         migrations.apply_saves_corporate_survivor_attrs(conn_init)
         migrations.ensure_progresso_e_ranking(conn_init)
+        migrations.ensure_cargo_e_rodadas(conn_init)
         conn_init.commit()
     finally:
         conn_init.close()

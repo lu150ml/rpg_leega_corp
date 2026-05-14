@@ -1,0 +1,19 @@
+{
+  "cargos": [
+    { "id": "trainee", "xp_minimo": 0 },
+    { "id": "junior", "xp_minimo": 100 },
+    { "id": "pleno", "xp_minimo": 300 },
+    { "id": "senior", "xp_minimo": 600 },
+    { "id": "especialista", "xp_minimo": 1000 }
+  ],
+  "xp_por_final": {
+    "trainee_lenda": 80,
+    "promessa_corporativa": 60,
+    "funcionario_invisivel": 40,
+    "sobrevivente_onboarding": 25,
+    "risco_operacional": 10,
+    "pediu_as_contas": 15,
+    "burnout": 0,
+    "demitido": 0
+  }
+}

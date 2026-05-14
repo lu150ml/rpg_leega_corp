@@ -27,6 +27,10 @@
     "funcionario_invisivel": {
       "titulo": "Sobrevivência normal",
       "descricao": "Você conclui a semana sem brilhar nem ruir — onboarding cumprido, dentro da normalidade."
+    },
+    "pediu_as_contas": {
+      "titulo": "Pediu as contas",
+      "descricao": "Você optou por sair por conta própria — nem sempre aguentar é a melhor estratégia."
     }
   }
 }

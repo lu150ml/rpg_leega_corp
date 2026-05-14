@@ -25,8 +25,14 @@ def algum_atributo_operacional_zero(attrs: dict[str, int]) -> bool:
     return any(int(attrs[k]) <= 0 for k in _ATTRS_OPERACIONAIS)
 
 
-def final_por_colapso_imediato(attrs: dict[str, int]) -> str | None:
+def final_por_colapso_imediato(
+    attrs: dict[str, int], flags: dict[str, Any] | None = None
+) -> str | None:
     """Finais que encerram a partida antes da sexta-feira (sem próximo evento na cadeia)."""
+
+    flags = flags or {}
+    if flags.get("pediu_as_contas"):
+        return "pediu_as_contas"
 
     if algum_atributo_operacional_zero(attrs):
         return "demitido"
@@ -38,8 +44,14 @@ def final_por_colapso_imediato(attrs: dict[str, int]) -> str | None:
     return None
 
 
-def calcular_final_id(attrs: dict[str, int]) -> str:
+def calcular_final_id(
+    attrs: dict[str, int], flags: dict[str, Any] | None = None
+) -> str:
     """Retorna o identificador do primeiro final cuja regra casa (ordem exclusiva)."""
+
+    flags = flags or {}
+    if flags.get("pediu_as_contas"):
+        return "pediu_as_contas"
 
     if algum_atributo_operacional_zero(attrs):
         return "demitido"

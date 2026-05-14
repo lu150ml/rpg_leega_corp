@@ -6,7 +6,20 @@ import sqlite3
 from typing import Any
 
 from app.db import repositories as repo
-from app.services import conditions, consequences, endings, event_service, scoring
+from app.services import cargo, conditions, consequences, endings, event_service, scoring
+
+_CHAVES_PONTUACAO = (
+    "energia",
+    "reputacao",
+    "networking",
+    "ansiedade",
+    "produtividade",
+    "aprendizado",
+)
+
+
+def _attrs_para_pontuacao(attrs: dict[str, Any]) -> dict[str, int]:
+    return {k: int(attrs[k]) for k in _CHAVES_PONTUACAO}
 
 
 def _payload_fim_de_jogo(
@@ -14,16 +27,17 @@ def _payload_fim_de_jogo(
     player_id: int,
     nome_jogador: str,
     save_api: dict[str, Any],
-    attrs: dict[str, int],
+    attrs: dict[str, Any],
     final_id: str,
+    meta_progressao: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Resposta padrão ao encerrar partida (ranking + final)."""
 
-    pontuacao = scoring.calcular_pontuacao(attrs)
+    pontuacao = scoring.calcular_pontuacao(_attrs_para_pontuacao(attrs))
     repo.insert_ranking_entry(conn, player_id, nome_jogador, pontuacao, final_id)
     posicao = repo.contar_melhor_pontuacao(conn, pontuacao) + 1
     topo = repo.ranking_top(conn, 15)
-    return {
+    out: dict[str, Any] = {
         "save": save_api,
         "proximo_evento": None,
         "final": endings.final_para_resposta(final_id),
@@ -31,9 +45,12 @@ def _payload_fim_de_jogo(
         "posicao_ranking": posicao,
         "ranking_top": topo,
     }
+    if meta_progressao is not None:
+        out["meta_progressao"] = meta_progressao
+    return out
 
 
-def _attrs_from_save(row: sqlite3.Row) -> dict[str, int]:
+def _attrs_from_save(row: sqlite3.Row) -> dict[str, Any]:
     return {
         "energia": int(row["energia"]),
         "reputacao": int(row["reputacao"]),
@@ -41,6 +58,7 @@ def _attrs_from_save(row: sqlite3.Row) -> dict[str, int]:
         "ansiedade": int(row["ansiedade"]),
         "produtividade": int(row["produtividade"]),
         "aprendizado": int(row["aprendizado"]),
+        "xp": int(row["xp_rodada"]),
     }
 
 
@@ -56,7 +74,9 @@ def _resolve_proximo_id(conn: sqlite3.Connection, save: sqlite3.Row) -> str | No
     atual = save["evento_atual"]
     if atual:
         ev = by_id.get(str(atual))
-        if ev and conditions.avaliar_condicoes(ev.get("condicoes") or [], flags, attrs):
+        if ev and conditions.avaliar_condicoes(
+            ev.get("condicoes") or [], flags, attrs
+        ):
             return str(atual)
 
     for eid in ordem:
@@ -85,7 +105,7 @@ def proximo_evento_completo(conn: sqlite3.Connection, nome: str) -> dict[str, An
         if ultima is not None:
             pontuacao = int(ultima["pontuacao"])
         else:
-            pontuacao = scoring.calcular_pontuacao(attrs)
+            pontuacao = scoring.calcular_pontuacao(_attrs_para_pontuacao(attrs))
         posicao = repo.contar_melhor_pontuacao(conn, pontuacao) + 1
         topo = repo.ranking_top(conn, 15)
         return {
@@ -97,28 +117,48 @@ def proximo_evento_completo(conn: sqlite3.Connection, nome: str) -> dict[str, An
         }
 
     attrs_vivos = _attrs_from_save(save)
-    colapso = endings.final_por_colapso_imediato(attrs_vivos)
+    flags = dict(repo.save_row_to_api_dict(save)["flags"])
+    colapso = endings.final_por_colapso_imediato(attrs_vivos, flags)
     if colapso:
-        flags = dict(repo.save_row_to_api_dict(save)["flags"])
+        xp_rodada_atual = int(save["xp_rodada"])
+        bonus = cargo.calcular_xp_por_final(colapso)
+        xp_run = xp_rodada_atual + bonus
+        xp_total = int(save["xp_total"]) + xp_run
+        xp_conjunto = int(save["xp_conjunto"]) + xp_run
+        novo_cargo = cargo.calcular_cargo(xp_total)
+
         repo.update_save_full(
             conn,
             player_id,
             evento_atual=None,
-            energia=attrs_vivos["energia"],
-            reputacao=attrs_vivos["reputacao"],
-            networking=attrs_vivos["networking"],
-            ansiedade=attrs_vivos["ansiedade"],
-            produtividade=attrs_vivos["produtividade"],
-            aprendizado=attrs_vivos["aprendizado"],
+            energia=int(attrs_vivos["energia"]),
+            reputacao=int(attrs_vivos["reputacao"]),
+            networking=int(attrs_vivos["networking"]),
+            ansiedade=int(attrs_vivos["ansiedade"]),
+            produtividade=int(attrs_vivos["produtividade"]),
+            aprendizado=int(attrs_vivos["aprendizado"]),
             dia_atual=int(save["dia_atual"]),
             eventos_hoje=int(save["eventos_hoje"]),
             flags=flags,
             final_obtido=colapso,
+            xp_total=xp_total,
+            cargo=novo_cargo,
+            rodada_no_conjunto=int(save["rodada_no_conjunto"]),
+            xp_conjunto=xp_conjunto,
+            xp_rodada=0,
         )
         save2 = repo.get_save(conn, player_id)
         assert save2 is not None
         save_api = repo.save_row_to_api_dict(save2)
         nome_j = str(p["nome"])
+        meta = {
+            "xp_ganho_nesta_run": xp_run,
+            "xp_bonus_final": bonus,
+            "xp_total": xp_total,
+            "cargo": novo_cargo,
+            "rodada_no_conjunto": int(save["rodada_no_conjunto"]),
+            "xp_conjunto": xp_conjunto,
+        }
         out = _payload_fim_de_jogo(
             conn,
             player_id,
@@ -126,6 +166,7 @@ def proximo_evento_completo(conn: sqlite3.Connection, nome: str) -> dict[str, An
             save_api,
             attrs_vivos,
             colapso,
+            meta_progressao=meta,
         )
         conn.commit()
         return out
@@ -204,7 +245,7 @@ def aplicar_decisao(
             eventos_hoje = 0
             dia_atual = min(5, dia_atual + 1)
 
-    colapso = endings.final_por_colapso_imediato(attrs)
+    colapso = endings.final_por_colapso_imediato(attrs, flags)
     if colapso:
         final_id: str | None = colapso
         evento_atual = None
@@ -214,23 +255,44 @@ def aplicar_decisao(
             final_id = None
             evento_atual = str(proximo)
         else:
-            final_id = endings.calcular_final_id(attrs)
+            final_id = endings.calcular_final_id(attrs, flags)
             evento_atual = None
+
+    xp_rodada_after = int(attrs.get("xp", 0))
+    bonus = 0
+    xp_run = 0
+    if final_id:
+        bonus = cargo.calcular_xp_por_final(final_id)
+        xp_run = xp_rodada_after + bonus
+        xp_total = int(save_row["xp_total"]) + xp_run
+        xp_conjunto = int(save_row["xp_conjunto"]) + xp_run
+        novo_cargo = cargo.calcular_cargo(xp_total)
+        xp_rodada_persist = 0
+    else:
+        xp_total = int(save_row["xp_total"])
+        xp_conjunto = int(save_row["xp_conjunto"])
+        novo_cargo = str(save_row["cargo"])
+        xp_rodada_persist = xp_rodada_after
 
     repo.update_save_full(
         conn,
         player_id,
         evento_atual=evento_atual,
-        energia=attrs["energia"],
-        reputacao=attrs["reputacao"],
-        networking=attrs["networking"],
-        ansiedade=attrs["ansiedade"],
-        produtividade=attrs["produtividade"],
-        aprendizado=attrs["aprendizado"],
+        energia=int(attrs["energia"]),
+        reputacao=int(attrs["reputacao"]),
+        networking=int(attrs["networking"]),
+        ansiedade=int(attrs["ansiedade"]),
+        produtividade=int(attrs["produtividade"]),
+        aprendizado=int(attrs["aprendizado"]),
         dia_atual=dia_atual,
         eventos_hoje=eventos_hoje,
         flags=flags,
         final_obtido=final_id,
+        xp_total=xp_total,
+        cargo=novo_cargo,
+        rodada_no_conjunto=int(save_row["rodada_no_conjunto"]),
+        xp_conjunto=xp_conjunto,
+        xp_rodada=xp_rodada_persist,
     )
     repo.insert_decision(conn, player_id, evento_id, opcao_id)
 
@@ -240,7 +302,23 @@ def aplicar_decisao(
 
     if final_id:
         nome_jogador = str(p["nome"])
-        return _payload_fim_de_jogo(conn, player_id, nome_jogador, save_api, attrs, final_id)
+        meta = {
+            "xp_ganho_nesta_run": xp_run,
+            "xp_bonus_final": bonus,
+            "xp_total": xp_total,
+            "cargo": novo_cargo,
+            "rodada_no_conjunto": int(save_row["rodada_no_conjunto"]),
+            "xp_conjunto": xp_conjunto,
+        }
+        return _payload_fim_de_jogo(
+            conn,
+            player_id,
+            nome_jogador,
+            save_api,
+            attrs,
+            final_id,
+            meta_progressao=meta,
+        )
 
     prox = event_service.get_event(evento_atual) if evento_atual else None
     return {"save": save_api, "proximo_evento": prox, "final": None}
