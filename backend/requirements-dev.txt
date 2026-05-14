@@ -1,0 +1,4 @@
+# Dependências de desenvolvimento (testes, cobertura)
+-r requirements.txt
+pytest>=8.0,<9
+pytest-cov>=4.0,<7

@@ -53,6 +53,26 @@ python run.py
 
 Abra **http://localhost:5000** — o Flask serve o `frontend/` e a API em **`/api/...`** (mesma origem, sem CORS extra no MVP).
 
+### Testes automatizados
+
+Na pasta `backend` (usa `pytest` via `requirements-dev.txt`):
+
+```bash
+cd backend
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
+Se o `pytest` estiver no `PATH`, pode usar apenas `pytest` no lugar de `python -m pytest`.
+
+Cobertura de código:
+
+```bash
+python -m pytest --cov=app --cov-report=term-missing
+```
+
+Ao fim da corrida é gerado o ficheiro **[`backend/relatorio_testes.txt`](backend/relatorio_testes.txt)** (lista do que passou/falhou e resumo). Está no `.gitignore` para não ir para o Git.
+
 ---
 
 ## Estrutura do projeto
