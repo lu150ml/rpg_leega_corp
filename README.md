@@ -120,6 +120,7 @@ Esquema SQLite: [`docs/DATABASE.md`](docs/DATABASE.md).
 
 | Doc | Conteúdo |
 |-----|----------|
+| [`docs/TECHNICAL_REFERENCE.md`](docs/TECHNICAL_REFERENCE.md) | Referência única: arquitetura, API, banco, engine, parâmetros e JSON |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Camadas e fluxo de decisão |
 | [`docs/EVENT_FORMAT.md`](docs/EVENT_FORMAT.md) | Schema de eventos, condições e consequências |
 | [`docs/API.md`](docs/API.md) | Referência REST |
