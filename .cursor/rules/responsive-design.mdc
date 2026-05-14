@@ -1,0 +1,13 @@
+---
+description: Layout mobile-first e tipografia fluida para o frontend.
+globs: "frontend/css/**/*.css"
+---
+
+# Layout responsivo
+
+- **Mobile-first**: estilos base para telas estreitas; use `min-width` para progressão.
+- **Breakpoints** de referência: `480px`, `768px`, `1024px` (ajuste por conteúdo, não por dogma).
+- Tipografia: prefira **`clamp()`** para escalonar tamanhos entre mobile e desktop.
+- Evite larguras fixas grandes em `px` para containers principais; use `%`, `max-width`, `min()`, `100%` com `box-sizing: border-box`.
+- Toques: alvos clicáveis com área mínima confortável (~44px) quando possível.
+- Testar leitura em 320–400px de largura antes de considerar “ok”.

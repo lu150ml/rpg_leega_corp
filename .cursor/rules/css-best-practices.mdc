@@ -1,0 +1,13 @@
+---
+description: Organização de CSS com variáveis e componentes.
+globs: "**/*.css"
+---
+
+# CSS — boas práticas
+
+- Centralize **tokens** (cores, espaçamento, raios, sombras) em `variables.css` usando Custom Properties (`--*`).
+- Estilos por responsabilidade: reset, variáveis, layout, componentes (evitar um único arquivo gigante sem estrutura).
+- **Evitar `!important`** salvo correção pontual de terceiros — prefira especificidade clara e camadas consistentes.
+- Preferir **flex/grid** para layout; evitar floats para layout principal.
+- Componentes: prefixar ou agrupar por BEM simples ou por escopo de arquivo (`components.css`) de forma consistente com o projeto.
+- Respeitar `prefers-reduced-motion` quando houver animações.

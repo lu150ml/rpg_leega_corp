@@ -1,0 +1,32 @@
+{
+  "finais": {
+    "demitido": {
+      "titulo": "Demitido no Período de Experiência",
+      "descricao": "Seus indicadores operacionais chegaram ao limite — energia, reputação, networking, produtividade ou aprendizado esgotados. A jornada acaba antes da semana fechar."
+    },
+    "burnout": {
+      "titulo": "Burnout em Tempo Recorde",
+      "descricao": "Ansiedade no teto e energia destruída: você quebra ainda na primeira semana, mais rápido do que o RH esperava."
+    },
+    "risco_operacional": {
+      "titulo": "Risco operacional",
+      "descricao": "Desempenho muito baixo ou crise de ansiedade ou energia crítica — o time questiona se você aguenta o ritmo."
+    },
+    "trainee_lenda": {
+      "titulo": "Destaque da equipe",
+      "descricao": "Você entrega, aprende rápido, é bem visto e mantém saúde mental — referência do onboarding."
+    },
+    "promessa_corporativa": {
+      "titulo": "Promessa corporativa",
+      "descricao": "Perfil redondo: boa média entre produtividade, reputação, networking e aprendizado, sem deixar a ansiedade dominar."
+    },
+    "sobrevivente_onboarding": {
+      "titulo": "Sobrevivente do onboarding",
+      "descricao": "Você chega à sexta-feira, mas a ansiedade alta mostra que foi no limite."
+    },
+    "funcionario_invisivel": {
+      "titulo": "Sobrevivência normal",
+      "descricao": "Você conclui a semana sem brilhar nem ruir — onboarding cumprido, dentro da normalidade."
+    }
+  }
+}

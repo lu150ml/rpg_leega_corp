@@ -1,0 +1,13 @@
+---
+description: Convenções de blueprints Flask e camada HTTP.
+globs: "backend/app/routes/**/*.py"
+---
+
+# Flask — convenções da API
+
+- Um **blueprint por recurso** (`players`, `saves`, `events`, `decisions`) registrado na factory.
+- Respostas JSON com **`jsonify`** e **status HTTP** corretos (`201`, `400`, `404`, `500` conforme o caso).
+- **Validação de payload** na rota (campos obrigatórios, tipos básicos); delegar regra de jogo ao **service**.
+- **Proibido SQL** nas rotas — todo acesso ao banco via **`repositories.py`** (ou funções convidadas de `db/`).
+- Mensagens de erro: JSON consistente, ex. `{"erro": "mensagem"}` em pt-BR.
+- CORS: no MVP, **mesma origem** servindo `frontend/` como estático pelo Flask.

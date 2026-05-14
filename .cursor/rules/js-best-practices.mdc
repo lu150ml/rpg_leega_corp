@@ -1,0 +1,14 @@
+---
+description: JavaScript modular e seguro (cliente frontend).
+globs: "frontend/**/*.js"
+---
+
+# JavaScript (frontend) — boas práticas
+
+- Use **ES modules** (`import` / `export`) e um único ponto de entrada (ex.: `main.js`).
+- Use `const` e `let`; **não use `var`**.
+- **Nunca use `eval`**; evite `innerHTML` com conteúdo não confiável.
+- Em `fetch`, use `try/catch` e verifique `response.ok` antes de assumir sucesso.
+- Em `JSON.parse`, envolva em `try/catch` quando o input puder ser inválido.
+- **Frontend** (`frontend/`): regra de jogo no backend; UI só renderiza estado da API.
+- Pub/sub ou estado: preferir módulos pequenos em vez de globais mutáveis espalhados.

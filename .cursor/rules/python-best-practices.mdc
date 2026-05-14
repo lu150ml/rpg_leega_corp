@@ -1,0 +1,14 @@
+---
+description: Estilo Python e organização para o backend Flask.
+globs: "backend/**/*.py"
+---
+
+# Python — boas práticas
+
+- Siga **PEP 8** (4 espaços, nomes `snake_case`, imports ordenados).
+- Prefira **type hints** em funções e métodos públicos dos serviços.
+- **Docstrings em pt-BR** em módulos e funções não óbvias.
+- Use **`pathlib.Path`** para caminhos de arquivos e eventos JSON.
+- Evite **import circular**: camadas `routes` → `services` → `db` / leitura de dados; não importar `routes` de dentro de `services`.
+- Configure encoding explícito ao abrir texto (`encoding="utf-8"`).
+- Para SQLite, habilite chaves estrangeiras quando usar `ON DELETE CASCADE` (`PRAGMA foreign_keys = ON`).

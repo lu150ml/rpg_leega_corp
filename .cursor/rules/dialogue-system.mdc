@@ -1,0 +1,10 @@
+---
+description: Roteiro declarativo em JSON; UI só exibe eventos da API.
+globs: backend/data/events/**/*.json,frontend/js/components/eventScreen.js
+---
+
+# Narrativa e diálogo
+
+- **Roteiro** só em `backend/data/events/*.json` (+ `index.json`) — texto longo não embutido em JS da UI.
+- Eventos: `descricao`, `opcoes[]` com `texto`, `consequencias`, `condicoes`; ver `docs/EVENT_FORMAT.md`.
+- **Frontend** (`eventScreen.js` e afins): monta DOM a partir do JSON retornado pela API; sem calcular finais nem elegibilidade.

@@ -1,0 +1,215 @@
+{
+  "eventos": [
+    {
+      "id": "cap01_primeiro_dia",
+      "descricao": "Início da sua primeira semana. O gerente te apresenta ao time e pede que você escolha como quer entrar no ritmo da empresa.",
+      "fundo": "escritorio_dia",
+      "personagem": "gerente",
+      "condicoes": [{ "tipo": "flag_ausente", "chave": "primeiro_dia_feito" }],
+      "opcoes": [
+        {
+          "id": "opt_apresentar_proativo",
+          "texto": "Se apresentar para todos do time proativamente",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "primeiro_dia_feito", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "networking", "delta": 10 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 5 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": -6 }
+          ],
+          "proximo_evento": "cap01_primeira_tarefa"
+        },
+        {
+          "id": "opt_observar_calado",
+          "texto": "Ficar quieto e observar o ambiente",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "primeiro_dia_feito", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "networking", "delta": -5 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": -5 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": 4 }
+          ],
+          "proximo_evento": "cap01_primeira_tarefa"
+        }
+      ]
+    },
+    {
+      "id": "cap01_primeira_tarefa",
+      "descricao": "Depois do café, o gerente te encaminha uma planilha com inconsistências e pergunta como você prefere atacar o problema.",
+      "fundo": "escritorio_tarde",
+      "personagem": "gerente",
+      "condicoes": [
+        { "tipo": "flag_presente", "chave": "primeiro_dia_feito" },
+        { "tipo": "flag_ausente", "chave": "primeiro_tarefa_ok" }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_foco_profundo",
+          "texto": "Bloquear a tarde inteira para fechar tudo com calma",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "primeiro_tarefa_ok", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": 18 },
+            { "tipo": "alterar_atributo", "chave": "aprendizado", "delta": 12 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 10 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": -12 }
+          ],
+          "proximo_evento": "cap01_momento_foco_profundo"
+        },
+        {
+          "id": "opt_pedir_ajuda",
+          "texto": "Marcar 15 minutos com um colega para alinhar antes de revisar",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "primeiro_tarefa_ok", "valor": true },
+            { "tipo": "set_flag", "chave": "pronto_reuniao", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "networking", "delta": 12 },
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": 8 },
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": 8 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": 3 }
+          ],
+          "proximo_evento": "cap01_reuniao_de_alinhamento"
+        }
+      ]
+    },
+    {
+      "id": "cap01_momento_foco_profundo",
+      "descricao": "Você fecha a porta, silencia notificações e mergulha na planilha por horas. O prazo aperta na nuca, mas o progresso é visível.",
+      "fundo": "escritorio_tarde",
+      "personagem": null,
+      "condicoes": [
+        { "tipo": "flag_presente", "chave": "primeiro_tarefa_ok" },
+        { "tipo": "flag_ausente", "chave": "pronto_reuniao" }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_segue_reuniao",
+          "texto": "Fechar o que dá e ir à reunião de alinhamento",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "pronto_reuniao", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": 6 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": -8 }
+          ],
+          "proximo_evento": "cap01_reuniao_de_alinhamento"
+        }
+      ]
+    },
+    {
+      "id": "cap01_reuniao_de_alinhamento",
+      "descricao": "Reunião rápida de alinhamento: o time precisa alinhar números e narrativa antes de ir ao cliente. O gerente te coloca na roda e pede sua leitura.",
+      "fundo": "sala_reuniao",
+      "personagem": "gerente",
+      "condicoes": [
+        { "tipo": "flag_presente", "chave": "pronto_reuniao" },
+        { "tipo": "flag_ausente", "chave": "reuniao_encerrada" }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_tese_clara",
+          "texto": "Apresentar uma tese objetiva com apoio nos dados da planilha",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "escolheu_tese_clara", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": 16 },
+            { "tipo": "alterar_atributo", "chave": "aprendizado", "delta": 12 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 6 }
+          ],
+          "proximo_evento": "cap01_feedback_gerente"
+        },
+        {
+          "id": "opt_pousar_bem",
+          "texto": "Fazer uma pergunta pontual para não parecer desalinhado e registrar tudo",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "reuniao_encerrada", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": 4 },
+            { "tipo": "alterar_atributo", "chave": "aprendizado", "delta": 18 },
+            { "tipo": "alterar_atributo", "chave": "networking", "delta": 8 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 2 }
+          ],
+          "proximo_evento": "cap01_encerramento_elite"
+        }
+      ]
+    },
+    {
+      "id": "cap01_feedback_gerente",
+      "descricao": "Depois da rodada, o gerente te para no corredor com um sorriso contido. “Boa leitura. Mantém esse nível de clareza.”",
+      "fundo": "corredor_escritorio",
+      "personagem": "gerente",
+      "condicoes": [
+        { "tipo": "flag_presente", "chave": "escolheu_tese_clara" },
+        { "tipo": "flag_ausente", "chave": "reuniao_encerrada" }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_agradecer_feedback",
+          "texto": "Agradecer e anotar o feedback mentalmente",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "reuniao_encerrada", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": 6 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": -3 }
+          ],
+          "proximo_evento": "cap01_encerramento_elite"
+        }
+      ]
+    },
+    {
+      "id": "cap01_encerramento_elite",
+      "descricao": "Momento opcional: seu desempenho chamou atenção. O time convida você para um papo rápido sobre próximos passos — um sinal de que você já deixou marca.",
+      "fundo": "escritorio_noite",
+      "personagem": "colega_senior",
+      "condicoes": [
+        { "tipo": "flag_presente", "chave": "reuniao_encerrada" },
+        { "tipo": "flag_ausente", "chave": "pulou_encerramento_elite" },
+        { "tipo": "atributo_min", "chave": "reputacao", "valor": 72 }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_participar_papo",
+          "texto": "Participar do papo com o time sênior",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "pulou_encerramento_elite", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "networking", "delta": 10 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 4 }
+          ],
+          "proximo_evento": "cap01_fim_do_dia"
+        },
+        {
+          "id": "opt_ir_direto_fim",
+          "texto": "Agradecer e encerrar o dia com calma",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "pulou_encerramento_elite", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": -6 }
+          ],
+          "proximo_evento": "cap01_fim_do_dia"
+        }
+      ]
+    },
+    {
+      "id": "cap01_fim_do_dia",
+      "descricao": "Fim da tarde. Você olha para a mesa: planilha, e-mails e o burburinho do escritório sumindo. Como você encerra o primeiro dia?",
+      "fundo": "escritorio_noite",
+      "personagem": null,
+      "condicoes": [
+        { "tipo": "flag_presente", "chave": "reuniao_encerrada" },
+        { "tipo": "flag_ausente", "chave": "encerramento_primeiro_dia_feito" }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_plano_amanha",
+          "texto": "Organizar as pendências e montar um plano objetivo para amanhã",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "encerramento_primeiro_dia_feito", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": 18 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 12 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": -10 }
+          ]
+        },
+        {
+          "id": "opt_desacelerar",
+          "texto": "Fechar o notebook com intenção e desacelerar — primeiro dia já pesa",
+          "consequencias": [
+            { "tipo": "set_flag", "chave": "encerramento_primeiro_dia_feito", "valor": true },
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": -8 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": -16 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": 15 }
+          ]
+        }
+      ]
+    }
+  ]
+}

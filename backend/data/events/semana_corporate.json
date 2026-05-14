@@ -1,0 +1,2166 @@
+{
+  "eventos": [
+    {
+      "id": "CS_D01_E1",
+      "dia": 1,
+      "momento_no_dia": 1,
+      "evento_principal": true,
+      "descricao": "Dia 1 — Chegada. O RH te apresenta a área. Seu crachá ainda parece estranho no bolso.",
+      "fundo": "escritorio",
+      "personagem": null,
+      "condicoes": [
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D01_E1"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D01_E1_a",
+          "texto": "Apresentar-se com energia e curiosidade.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E1",
+              "valor": true
+            },
+            {
+              "tipo": "set_flag",
+              "chave": "trainee_primeiro_dia",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D01_E2"
+        },
+        {
+          "id": "opt_ok_CS_D01_E1_b",
+          "texto": "Ouvir com atenção antes de falar.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E1",
+              "valor": true
+            },
+            {
+              "tipo": "set_flag",
+              "chave": "trainee_primeiro_dia",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 7
+            }
+          ],
+          "proximo_evento": "CS_D01_E2"
+        },
+        {
+          "id": "opt_ok_CS_D01_E1_c",
+          "texto": "Fazer perguntas técnicas logo de cara.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E1",
+              "valor": true
+            },
+            {
+              "tipo": "set_flag",
+              "chave": "trainee_primeiro_dia",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D01_E2"
+        },
+        {
+          "id": "opt_ok_CS_D01_E1_d",
+          "texto": "Ficar quieto e observar o ambiente.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E1",
+              "valor": true
+            },
+            {
+              "tipo": "set_flag",
+              "chave": "trainee_primeiro_dia",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D01_E2"
+        }
+      ]
+    },
+    {
+      "id": "CS_D01_E2",
+      "dia": 1,
+      "momento_no_dia": 2,
+      "evento_principal": true,
+      "descricao": "Dia 1 — Mesa. Sua mesa está entre dois analistas experientes. O chefe passa e cumprimenta a equipe.",
+      "fundo": "escritorio",
+      "personagem": "chefe",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D01_E1"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D01_E2"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D01_E2_a",
+          "texto": "Levantar e cumprimentar com proatividade.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D01_E3"
+        },
+        {
+          "id": "opt_ok_CS_D01_E2_b",
+          "texto": "Acenar com a cabeça e sorrir.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -3
+            }
+          ],
+          "proximo_evento": "CS_D01_E3"
+        },
+        {
+          "id": "opt_ok_CS_D01_E2_c",
+          "texto": "Voltar ao trabalho sem interagir.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D01_E3"
+        },
+        {
+          "id": "opt_ok_CS_D01_E2_d",
+          "texto": "Perguntar se pode agendar uma conversa.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D01_E3"
+        }
+      ]
+    },
+    {
+      "id": "CS_D01_E3",
+      "dia": 1,
+      "momento_no_dia": 3,
+      "evento_principal": true,
+      "descricao": "Dia 1 — Fim do dia. O escritório esvazia. Você repassa mentalmente tudo que ouviu.",
+      "fundo": "escritorio",
+      "personagem": null,
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D01_E2"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D01_E3"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D01_E3_a",
+          "texto": "Anotar tudo em um documento organizado.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 8
+            }
+          ],
+          "proximo_evento": "CS_D02_E1"
+        },
+        {
+          "id": "opt_ok_CS_D01_E3_b",
+          "texto": "Mandar mensagem ao líder com um resumo do dia.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D02_E1"
+        },
+        {
+          "id": "opt_ok_CS_D01_E3_c",
+          "texto": "Ir embora e tentar descansar.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": -2
+            }
+          ],
+          "proximo_evento": "CS_D02_E1"
+        },
+        {
+          "id": "opt_ok_CS_D01_E3_d",
+          "texto": "Ficar em horas extras revisando tudo.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D01_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D02_E1"
+        }
+      ]
+    },
+    {
+      "id": "CS_D02_E1",
+      "dia": 2,
+      "momento_no_dia": 1,
+      "evento_principal": true,
+      "descricao": "Dia 2 — E-mail. Caixa de entrada cheia. Três pedidos urgentes com prazos sobrepostos.",
+      "fundo": "escritorio",
+      "personagem": "chefe",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D01_E3"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D02_E1"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D02_E1_a",
+          "texto": "Responder todos os e-mails na hora.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D02_E2"
+        },
+        {
+          "id": "opt_ok_CS_D02_E1_b",
+          "texto": "Priorizar o mais urgente e alinhar prazos.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 6
+            }
+          ],
+          "proximo_evento": "CS_D02_E2"
+        },
+        {
+          "id": "opt_ok_CS_D02_E1_c",
+          "texto": "Pedir ajuda a um colega para dividir.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D02_E2"
+        },
+        {
+          "id": "opt_ok_CS_D02_E1_d",
+          "texto": "Ignorar e ver quem cobra primeiro.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -4
+            }
+          ],
+          "proximo_evento": "CS_D02_E2"
+        }
+      ]
+    },
+    {
+      "id": "CS_D02_E2",
+      "dia": 2,
+      "momento_no_dia": 2,
+      "evento_principal": true,
+      "descricao": "Dia 2 — Stand-up. A reunião diária: todos falam em 30 segundos o que farão.",
+      "fundo": "escritorio",
+      "personagem": "colega",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D02_E1"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D02_E2"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D02_E2_a",
+          "texto": "Falar de forma clara e objetiva.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D02_E3"
+        },
+        {
+          "id": "opt_ok_CS_D02_E2_b",
+          "texto": "Ser honesto sobre bloqueios.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D02_E3"
+        },
+        {
+          "id": "opt_ok_CS_D02_E2_c",
+          "texto": "Improvisar e exagerar o progresso.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -3
+            }
+          ],
+          "proximo_evento": "CS_D02_E3"
+        },
+        {
+          "id": "opt_ok_CS_D02_E2_d",
+          "texto": "Passar a palavra sem dizer quase nada.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -5
+            }
+          ],
+          "proximo_evento": "CS_D02_E3"
+        }
+      ]
+    },
+    {
+      "id": "CS_D02_E3",
+      "dia": 2,
+      "momento_no_dia": 3,
+      "evento_principal": true,
+      "descricao": "Dia 2 — Tarde. Um cliente interno cobra status de uma entrega que ainda não existe.",
+      "fundo": "escritorio",
+      "personagem": "cliente_interno",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D02_E2"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D02_E3"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D02_E3_a",
+          "texto": "Admitir que não existe e propor um prazo.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D03_E1"
+        },
+        {
+          "id": "opt_ok_CS_D02_E3_b",
+          "texto": "Ganhar tempo com resposta vaga.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -2
+            }
+          ],
+          "proximo_evento": "CS_D03_E1"
+        },
+        {
+          "id": "opt_ok_CS_D02_E3_c",
+          "texto": "Montar algo rápido e entregar parcialmente.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": -2
+            }
+          ],
+          "proximo_evento": "CS_D03_E1"
+        },
+        {
+          "id": "opt_ok_CS_D02_E3_d",
+          "texto": "Escalar para o líder resolver.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D02_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -1
+            }
+          ],
+          "proximo_evento": "CS_D03_E1"
+        }
+      ]
+    },
+    {
+      "id": "CS_D03_E1",
+      "dia": 3,
+      "momento_no_dia": 1,
+      "evento_principal": true,
+      "descricao": "Dia 3 — Planilha. Você herdou uma planilha com fórmulas quebradas e notas manuscritas na margem.",
+      "fundo": "escritorio",
+      "personagem": null,
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D02_E3"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D03_E1"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D03_E1_a",
+          "texto": "Corrigir tudo do zero, sozinho.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 6
+            }
+          ],
+          "proximo_evento": "CS_D03_E2"
+        },
+        {
+          "id": "opt_ok_CS_D03_E1_b",
+          "texto": "Pedir ao autor original para explicar.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 8
+            }
+          ],
+          "proximo_evento": "CS_D03_E2"
+        },
+        {
+          "id": "opt_ok_CS_D03_E1_c",
+          "texto": "Consertar o mínimo e documentar o restante.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D03_E2"
+        },
+        {
+          "id": "opt_ok_CS_D03_E1_d",
+          "texto": "Devolver dizendo que recebeu assim.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -3
+            }
+          ],
+          "proximo_evento": "CS_D03_E2"
+        }
+      ]
+    },
+    {
+      "id": "CS_D03_E2",
+      "dia": 3,
+      "momento_no_dia": 2,
+      "evento_principal": true,
+      "descricao": "Dia 3 — Almoço. Um colega convida você para almoçar com o pessoal mais sênior.",
+      "fundo": "escritorio",
+      "personagem": "colega",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D03_E1"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D03_E2"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D03_E2_a",
+          "texto": "Aceitar o convite e participar ativamente.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 9
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D03_E3"
+        },
+        {
+          "id": "opt_ok_CS_D03_E2_b",
+          "texto": "Aceitar e ficar quieto, só observando.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D03_E3"
+        },
+        {
+          "id": "opt_ok_CS_D03_E2_c",
+          "texto": "Recusar educadamente para focar no trabalho.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D03_E3"
+        },
+        {
+          "id": "opt_ok_CS_D03_E2_d",
+          "texto": "Aceitar e tentar impressionar demais.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 6
+            }
+          ],
+          "proximo_evento": "CS_D03_E3"
+        }
+      ]
+    },
+    {
+      "id": "CS_D03_E3",
+      "dia": 3,
+      "momento_no_dia": 3,
+      "evento_principal": true,
+      "descricao": "Dia 3 — Feedback. O líder pede cinco minutos para uma conversa rápida sobre expectativas.",
+      "fundo": "escritorio",
+      "personagem": "lider",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D03_E2"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D03_E3"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D03_E3_a",
+          "texto": "Ouvir, anotar e fazer perguntas pontuais.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 8
+            }
+          ],
+          "proximo_evento": "CS_D04_E1"
+        },
+        {
+          "id": "opt_ok_CS_D03_E3_b",
+          "texto": "Concordar com tudo sem questionar.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": -2
+            }
+          ],
+          "proximo_evento": "CS_D04_E1"
+        },
+        {
+          "id": "opt_ok_CS_D03_E3_c",
+          "texto": "Defender seu ponto com dados.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 6
+            }
+          ],
+          "proximo_evento": "CS_D04_E1"
+        },
+        {
+          "id": "opt_ok_CS_D03_E3_d",
+          "texto": "Reagir na defensiva.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D03_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": -2
+            }
+          ],
+          "proximo_evento": "CS_D04_E1"
+        }
+      ]
+    },
+    {
+      "id": "CS_D04_E1",
+      "dia": 4,
+      "momento_no_dia": 1,
+      "evento_principal": true,
+      "descricao": "Dia 4 — Crise leve. Um número na apresentação não bate. O time olha para a sala.",
+      "fundo": "escritorio",
+      "personagem": "chefe",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D03_E3"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D04_E1"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D04_E1_a",
+          "texto": "Assumir a frente e investigar o erro ao vivo.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D04_E2"
+        },
+        {
+          "id": "opt_ok_CS_D04_E1_b",
+          "texto": "Sugerir pausar e verificar após a reunião.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 2
+            }
+          ],
+          "proximo_evento": "CS_D04_E2"
+        },
+        {
+          "id": "opt_ok_CS_D04_E1_c",
+          "texto": "Culpar a fonte de dados sem aparecer.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D04_E2"
+        },
+        {
+          "id": "opt_ok_CS_D04_E1_d",
+          "texto": "Pedir ao líder para conduzir.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D04_E2"
+        }
+      ]
+    },
+    {
+      "id": "CS_D04_E2",
+      "dia": 4,
+      "momento_no_dia": 2,
+      "evento_principal": true,
+      "descricao": "Dia 4 — Pair. Você programa ou revisa o trabalho lado a lado com outra pessoa.",
+      "fundo": "escritorio",
+      "personagem": "colega",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D04_E1"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D04_E2"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D04_E2_a",
+          "texto": "Guiar e explicar seu raciocínio.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D04_E3"
+        },
+        {
+          "id": "opt_ok_CS_D04_E2_b",
+          "texto": "Deixar o colega liderar e aprender.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 8
+            }
+          ],
+          "proximo_evento": "CS_D04_E3"
+        },
+        {
+          "id": "opt_ok_CS_D04_E2_c",
+          "texto": "Dividir tarefas e trabalhar separados.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": -2
+            }
+          ],
+          "proximo_evento": "CS_D04_E3"
+        },
+        {
+          "id": "opt_ok_CS_D04_E2_d",
+          "texto": "Competir discretamente para parecer melhor.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D04_E3"
+        }
+      ]
+    },
+    {
+      "id": "CS_D04_E3",
+      "dia": 4,
+      "momento_no_dia": 3,
+      "evento_principal": true,
+      "descricao": "Dia 4 — E-mail tardio. Às 18h chega um e-mail com 'URGENTE' no assunto.",
+      "fundo": "escritorio",
+      "personagem": null,
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D04_E2"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D04_E3"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D04_E3_a",
+          "texto": "Responder na hora e resolver sozinho.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D05_E1"
+        },
+        {
+          "id": "opt_ok_CS_D04_E3_b",
+          "texto": "Responder que verá com calma amanhã cedo.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -1
+            }
+          ],
+          "proximo_evento": "CS_D05_E1"
+        },
+        {
+          "id": "opt_ok_CS_D04_E3_c",
+          "texto": "Pedir esclarecimentos antes de agir.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 5
+            }
+          ],
+          "proximo_evento": "CS_D05_E1"
+        },
+        {
+          "id": "opt_ok_CS_D04_E3_d",
+          "texto": "Ignorar o e-mail por enquanto.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D04_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 9
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -3
+            }
+          ],
+          "proximo_evento": "CS_D05_E1"
+        }
+      ]
+    },
+    {
+      "id": "CS_D05_E1",
+      "dia": 5,
+      "momento_no_dia": 1,
+      "evento_principal": true,
+      "descricao": "Dia 5 — Revisão. Última revisão antes de subir o pacote para o cliente.",
+      "fundo": "escritorio",
+      "personagem": "lider",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D04_E3"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D05_E1"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D05_E1_a",
+          "texto": "Revisar item a item com checklist.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 7
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D05_E2"
+        },
+        {
+          "id": "opt_ok_CS_D05_E1_b",
+          "texto": "Confiar no que já foi feito e subir.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 2
+            }
+          ],
+          "proximo_evento": "CS_D05_E2"
+        },
+        {
+          "id": "opt_ok_CS_D05_E1_c",
+          "texto": "Pedir segunda revisão a um colega.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D05_E2"
+        },
+        {
+          "id": "opt_ok_CS_D05_E1_d",
+          "texto": "Fazer uma revisão superficial com pressa.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E1",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 2
+            }
+          ],
+          "proximo_evento": "CS_D05_E2"
+        }
+      ]
+    },
+    {
+      "id": "CS_D05_E2",
+      "dia": 5,
+      "momento_no_dia": 2,
+      "evento_principal": true,
+      "descricao": "Dia 5 — Apresentação. Você tem um slide para apoiar o time na chamada.",
+      "fundo": "escritorio",
+      "personagem": "chefe",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D05_E1"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D05_E2"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D05_E2_a",
+          "texto": "Apresentar com confiança e domínio.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D05_E3"
+        },
+        {
+          "id": "opt_ok_CS_D05_E2_b",
+          "texto": "Apoiar o slide e deixar o chefe falar.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 3
+            }
+          ],
+          "proximo_evento": "CS_D05_E3"
+        },
+        {
+          "id": "opt_ok_CS_D05_E2_c",
+          "texto": "Pedir para não apresentar por insegurança.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -6
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -3
+            }
+          ],
+          "proximo_evento": "CS_D05_E3"
+        },
+        {
+          "id": "opt_ok_CS_D05_E2_d",
+          "texto": "Improvisar sem slide achando que sabe tudo.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E2",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "produtividade",
+              "delta": -2
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 4
+            }
+          ],
+          "proximo_evento": "CS_D05_E3"
+        }
+      ]
+    },
+    {
+      "id": "CS_D05_E3",
+      "dia": 5,
+      "momento_no_dia": 3,
+      "evento_principal": true,
+      "descricao": "Dia 5 — Encerramento. A semana acaba. O gerente junta todo mundo para um fechamento simbólico.",
+      "fundo": "escritorio",
+      "personagem": "gerente",
+      "condicoes": [
+        {
+          "tipo": "flag_presente",
+          "chave": "ok_CS_D05_E2"
+        },
+        {
+          "tipo": "flag_ausente",
+          "chave": "ok_CS_D05_E3"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "opt_ok_CS_D05_E3_a",
+          "texto": "Compartilhar aprendizados com o grupo.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 6
+            }
+          ]
+        },
+        {
+          "id": "opt_ok_CS_D05_E3_b",
+          "texto": "Agradecer à equipe pelo suporte.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": -1
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 4
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": 8
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -5
+            }
+          ]
+        },
+        {
+          "id": "opt_ok_CS_D05_E3_c",
+          "texto": "Pedir feedback construtivo ao gerente.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": 3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "aprendizado",
+              "delta": 7
+            }
+          ]
+        },
+        {
+          "id": "opt_ok_CS_D05_E3_d",
+          "texto": "Ir embora assim que der.",
+          "consequencias": [
+            {
+              "tipo": "set_flag",
+              "chave": "ok_CS_D05_E3",
+              "valor": true
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "energia",
+              "delta": 5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "reputacao",
+              "delta": -3
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "networking",
+              "delta": -5
+            },
+            {
+              "tipo": "alterar_atributo",
+              "chave": "ansiedade",
+              "delta": -4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

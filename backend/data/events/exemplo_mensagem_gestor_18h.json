@@ -1,0 +1,54 @@
+{
+  "eventos": [
+    {
+      "id": "ex_gestor_msg_18h",
+      "dia": 1,
+      "momento_no_dia": 1,
+      "evento_principal": true,
+      "descricao": "São 18h. Seu gestor manda uma mensagem: “Rapidinho, consegue subir isso hoje?”",
+      "fundo": "escritorio_noite",
+      "personagem": null,
+      "condicoes": [],
+      "opcoes": [
+        {
+          "id": "opt_ex_gestor_18h_a",
+          "texto": "“Claro, pode deixar comigo.”",
+          "consequencias": [
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": 2 },
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": -2 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": 1 }
+          ],
+          "proximo_evento": "CONFIGURE_O_ID_DO_PROXIMO_EVENTO"
+        },
+        {
+          "id": "opt_ex_gestor_18h_b",
+          "texto": "“Consigo amanhã cedo com mais segurança.”",
+          "consequencias": [
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": 1 },
+            { "tipo": "alterar_atributo", "chave": "produtividade", "delta": -1 },
+            { "tipo": "alterar_atributo", "chave": "ansiedade", "delta": -1 }
+          ],
+          "proximo_evento": "CONFIGURE_O_ID_DO_PROXIMO_EVENTO"
+        },
+        {
+          "id": "opt_ex_gestor_18h_c",
+          "texto": "“Não entendi completamente o escopo.”",
+          "consequencias": [
+            { "tipo": "alterar_atributo", "chave": "aprendizado", "delta": 2 },
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": -1 }
+          ],
+          "proximo_evento": "CONFIGURE_O_ID_DO_PROXIMO_EVENTO"
+        },
+        {
+          "id": "opt_ex_gestor_18h_d",
+          "texto": "Ignorar a mensagem.",
+          "consequencias": [
+            { "tipo": "alterar_atributo", "chave": "energia", "delta": 1 },
+            { "tipo": "alterar_atributo", "chave": "reputacao", "delta": -3 }
+          ],
+          "proximo_evento": "CONFIGURE_O_ID_DO_PROXIMO_EVENTO"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+---
+description: Boas práticas HTML semântico e acessível para o frontend.
+globs: "**/*.html"
+---
+
+# HTML — boas práticas
+
+- Use HTML **semântico** (`main`, `header`, `section`, `button`, `nav` quando couber).
+- Defina `lang="pt-BR"` no `<html>`.
+- Inclua `<meta name="viewport" content="width=device-width, initial-scale=1">` em páginas responsivas.
+- Preferir **labels** associados a inputs (`for` / `id`) e textos alternativos significativos em imagens.
+- Evitar `div` apenas para tudo; agrupe fluxo de leitura com landmarks acessíveis.
+- Scripts de módulo: `type="module"` e `defer` quando apropriado.
+- Não depender de cor só para estado; combine com texto ou `aria-*` quando necessário.

@@ -1,0 +1,12 @@
+---
+description: Separação estrita entre UI, API e dados declarativos.
+alwaysApply: true
+---
+
+# Design orientado a dados
+
+1. **Roteiro só em JSON** — `backend/data/events/*.json` (+ `index.json`). Nenhum roteiro “hardcoded” em `.py` ou `.js`.
+2. **Engine não conhece DOM/HTML** — serviços retornam dicts estruturados serializáveis em JSON.
+3. **UI não contém regra de jogo** — o frontend não calcula finais, atributos ou condições; só exibe e envia decisões.
+4. **SQL só em repositórios** — `backend/app/db/repositories.py` (e `schema.sql`); rotas e services não montam strings SQL ad hoc.
+5. **Extensões** — novas mecânicas preferem: (a) novo tipo em JSON + handler registrado, (b) colunas/tabelas apenas se persistência exigir, com schema documentado.

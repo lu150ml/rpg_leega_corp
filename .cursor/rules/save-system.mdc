@@ -1,0 +1,10 @@
+---
+description: Save no SQLite via API Flask (sem localStorage na UI).
+globs: backend/app/routes/saves.py,backend/app/db/repositories.py,frontend/js/components/saveButton.js
+---
+
+# Save (servidor)
+
+- Persistência em **`saves`** + histórico em **`decisions`**; ver `docs/DATABASE.md` e `docs/API.md`.
+- Toda escolha válida passa por `POST /api/decisions`, que atualiza o save; a UI pode oferecer sincronizar/reiniciar via `DELETE /api/saves/<nome>`.
+- Não duplicar regra de jogo no cliente: atributos e `evento_atual` vêm da resposta da API.

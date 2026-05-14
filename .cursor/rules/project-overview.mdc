@@ -1,0 +1,35 @@
+---
+description: Visão geral — Corporate Survivor (mini RPG corporativo trainee).
+alwaysApply: true
+---
+
+# Projeto: Corporate Survivor
+
+## Tema
+
+Mini **RPG corporativo**: o jogador é **trainee** e precisa **sobreviver à primeira semana** na empresa (referência Leega Tecnologia). Cada decisão altera **atributos** e leva a um de **vários finais** (fim de semana, colapso ou desfechos por perfil).
+
+**Atributos (API / JSON, snake_case):** `energia`, `reputacao`, `networking`, `ansiedade`, `produtividade`, `aprendizado`.
+
+## Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript (ES modules), sem framework e sem build step.
+- **Backend**: Python 3.10+, Flask, sqlite3 (stdlib).
+- **Dados de roteiro**: JSON em `backend/data/events/` (nunca embutido em código de UI).
+- **Persistência**: SQLite (`backend/game.db` ou `DATABASE_PATH`).
+
+## Idioma
+
+- Interface, documentação técnica de código Python (docstrings) e conteúdo de jogo em **português (pt-BR)**.
+- Identificadores de API e chaves JSON: `snake_case` (ex.: `evento_atual`, `aprendizado`).
+
+## Estrutura esperada
+
+- `frontend/` — apenas apresentação e chamadas HTTP; **sem regra de jogo** (cliente da API).
+- `backend/app/` — API Flask, serviços (`services/`), acesso a dados (`db/`).
+- `backend/data/events/` — eventos declarativos e `index.json`.
+- `docs/` — arquitetura, formatos, API, banco.
+
+## Objetivo de código
+
+Código enxuto, data-driven: novos capítulos e eventos entram como JSON + registro no índice, não como lógica ad-hoc espalhada.

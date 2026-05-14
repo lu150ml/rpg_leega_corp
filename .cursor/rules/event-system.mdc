@@ -1,0 +1,33 @@
+---
+description: Sistema de eventos declarativos JSON e handlers extensíveis.
+globs:
+  - "backend/data/events/**/*.json"
+  - "backend/app/services/event_service.py"
+---
+
+# Sistema de eventos (data-driven)
+
+## Schema obrigatório (evento)
+
+Cada evento em JSON deve ter pelo menos:
+
+- `id` (string única, padrão sugerido `capXX_contexto_acao`)
+- `descricao` (texto apresentado ao jogador)
+- `condicoes` (lista; pode ser `[]` para sempre elegível na ordem do índice)
+- `opcoes` (lista de escolhas com `id`, `texto`, `consequencias`, `proximo_evento` opcional)
+
+Campos opcionais úteis: `fundo`, `personagem`.
+
+## Condições e consequências
+
+- **Não** criar `if/else` por `tipo` espalhado na engine — registrar handlers em **mapas/dicts** (ex.: `CONDITION_HANDLERS`, `CONSEQUENCE_HANDLERS`) e despachar por `tipo`.
+- Novo tipo de condição ou consequência = **novo handler** registrado nesse mapa + documentação em `docs/EVENT_FORMAT.md`.
+
+## Arquivos
+
+- `backend/data/events/index.json` lista os arquivos de roteiro na ordem de avaliação.
+- Cada arquivo referenciado agrega uma lista `eventos`.
+
+## IDs
+
+- `id` de evento e de opção devem ser **estáveis** (para saves e histórico de decisões).
